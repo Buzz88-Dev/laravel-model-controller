@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PageController extends Controller
 {
     public function index() {
         $data = [
             "pageTitle" => 'Pagina Metod-Controller',
-            "text" => 'Stampo la tabella Movies',
+            "text" => 'Stampo le card Movies',
         ];
+        $Movies = \App\movie::all();
+        // dd($Movies);
         // dd($data);
         //return view('home', $data);
-        return view('home', compact('data'));
+        return view('home', compact('data','Movies'));
     }
 
     public function new(){
@@ -21,6 +23,6 @@ class HomeController extends Controller
             "pageTitle" => 'New Page',
             "text" => 'Sono una nuova pagina',
         ];
-        return view('new', compact('data'));
+        return view('new', compact('data'));   // dove new è new.blade.php e 'data' è l array che passo al file in views
     }
 }
