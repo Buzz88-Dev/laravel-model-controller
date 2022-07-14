@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\movie;
 
 class PageController extends Controller
 {
     public function index() {
         $data = [
-            "pageTitle" => 'Pagina Metod-Controller',
+            "pageTitle" => 'Card Movies',
             "text" => 'Stampo le card Movies',
         ];
-        $Movies = \App\movie::all();
-        // dd($Movies);
         // dd($data);
+        $Movies = movie::all();
+        // dd($Movies);
+        $vote = movie::where('vote', '>', '9')->get();
+        // dd($vote);
         //return view('home', $data);
-        return view('home', compact('data','Movies'));
+        return view('home', compact('data','Movies', 'vote'));
     }
 
     public function new(){

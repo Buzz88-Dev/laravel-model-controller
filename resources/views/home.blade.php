@@ -12,13 +12,17 @@
 
     {{-- <h5>{{ $Movies }}</h5> --}}
 
+    {{-- @foreach ($vote as $voto)
+        <h6>{{ $voto->title }}</h6>
+    @endforeach --}}
+
     <div class="container">
         @foreach ($Movies as $movie)
             <div class="card_film">
                 <h3>{{$movie['title']}}</h3>
                 <h5>{{$movie['original_title']}}</h5>
                 <p>Data di uscita: {{$movie['date']}}</p>
-                <p>Voto: {{$movie['vote']}}</p>
+                <p>Voto: {{$movie->vote}}</p>
             </div>
         @endforeach
     </div>
